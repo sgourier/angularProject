@@ -28,11 +28,11 @@ body{
     text-decoration: none;
     font-size:200%;
 }
-.button:hover{
-    text-decoration: none;
-    color:#f1f1f1;
-    background-color: #b21f1e;
-}
+    .button:hover{
+        text-decoration: none;
+        color:#f1f1f1;
+        background-color: #b21f1e;
+    }
 .copyright{
     position: fixed;
     bottom: 0px;
