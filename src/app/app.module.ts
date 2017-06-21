@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { CallbackComponent } from './callback/callback.component';
 
-import { AppRoutingModule } from './app-routing.module'
-import { YoutubeRoutingModule } from './youtube/youtube-routing.module'
+import { AppRoutingModule } from './app-routing.module';
+import { YoutubeRoutingModule } from './youtube/youtube-routing.module';
 
-import { AuthService } from './auth/auth.service'
+import { AuthService } from './auth/auth.service';
+import { AuthGuard } from './common/auth.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,10 @@ import { AuthService } from './auth/auth.service'
     AppRoutingModule,
     YoutubeRoutingModule
   ],
-  providers: [AuthService],
+  providers: [
+      AuthService,
+      AuthGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
