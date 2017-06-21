@@ -5,7 +5,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import {AuthGuard} from '../common/auth.guard';
 
 const routes: Routes = [
-  { path: 'playlist',  component: PlaylistComponent }
+  { path: 'playlist',  component: PlaylistComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
