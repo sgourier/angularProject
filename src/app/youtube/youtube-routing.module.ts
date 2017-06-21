@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ListComponent } from './list/list.component';
+import { PlaylistComponent } from './playlist/playlist.component';
 import {AuthGuard} from '../common/auth.guard';
 
 const routes: Routes = [
-  { path: 'list',  component: ListComponent, canActivate: [AuthGuard] }
+  { path: 'playlist',  component: PlaylistComponent }
 ];
 
 @NgModule({
