@@ -9,6 +9,7 @@ import { AuthComponent } from './auth/auth.component';
 import { CallbackComponent } from './callback/callback.component';
 
 import { AppRoutingModule } from './app-routing.module'
+import { YoutubeRoutingModule } from './youtube/youtube-routing.module'
 
 import { AuthService } from './auth/auth.service'
 
@@ -23,6 +24,7 @@ import { AuthService } from './auth/auth.service'
     FormsModule,
     YoutubeModule,
     AppRoutingModule,
+    YoutubeRoutingModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
