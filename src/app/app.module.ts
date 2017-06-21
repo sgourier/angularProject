@@ -13,12 +13,14 @@ import { YoutubeRoutingModule } from './youtube/youtube-routing.module';
 
 import { AuthService } from './auth/auth.service';
 import { AuthGuard } from './common/auth.guard';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
-    CallbackComponent
+    CallbackComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
