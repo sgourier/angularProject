@@ -26,7 +26,7 @@ export class AuthService {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 window.location.hash = '';
                 this.setSession(authResult);
-                this.router.navigate(['/list']);
+                this.router.navigate(['/playlist']);
             } else if (err) {
                 this.router.navigate(['/login']);
                 console.log(err);
@@ -49,7 +49,7 @@ export class AuthService {
         localStorage.removeItem('id_token');
         localStorage.removeItem('expires_at');
         // Go back to the home route
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
     }
 
     public isAuthenticated(): boolean {
