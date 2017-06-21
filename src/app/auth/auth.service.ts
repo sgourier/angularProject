@@ -21,4 +21,17 @@ export class AuthService {
         this.auth0.authorize();
     }
 
+    public handleAuthentication(): void {
+        this.auth0.parseHash((err, authResult) => {
+            if (authResult && authResult.accessToken && authResult.idToken) {
+                window.location.hash = '';
+                this.setSession(authResult);
+                this.router.navigate(['/home']);
+            } else if (err) {
+                this.router.navigate(['/home']);
+                console.log(err);
+                alert(`Error: ${err.error}. Check the console for further details.`);
+            }
+        });
+    }
 }
