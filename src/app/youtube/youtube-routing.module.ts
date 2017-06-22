@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'youtube/login',  component: AuthComponent, canActivate: [AuthGuard] },
   { path: 'youtube/callback',  component: CallbackComponent, canActivate: [AuthGuard] },
   { path: 'video',  component: VideoComponent, canActivate: [AuthGuard] },
-  { path: 'playlist',  component: PlaylistComponent, canActivate: [AuthGuard] },
+  { path: 'playlist',  component: PlaylistComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
