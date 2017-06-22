@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { YOUTUBE_CONFIG } from '../youtubeSettings';
 
 @Injectable()
 export class YoutubeAuthService {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   login() {
     let url = YOUTUBE_CONFIG.authUrl;
@@ -16,5 +17,35 @@ export class YoutubeAuthService {
 
     window.location.replace(url);
   }
+
+  public handleRequest() {
+    const access_token = this.getParameterByName('access_token', window.location.href);
+    if (access_token !== '') {
+      localStorage.setItem('youtube_access_token', access_token);
+      this.router.navigate(['/playlist']);
+    } else {
+      alert('L\'accès à échoué');
+      this.router.navigate(['/youtube/login']);
+    }
+  }
+
+  private getParameterByName(name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+
+    name = name.replace(/[\[\]]/g, '\\$&');
+    const regex = new RegExp('[?&#]' + name + '(=([^&#]*)|&|#|$)'),
+     results = regex.exec(url);
+    if (!results) {
+      return '';
+    }
+
+    if (!results[2]) {
+      return '';
+    }
+
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
 }

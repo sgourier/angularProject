@@ -14,6 +14,6 @@ export const YOUTUBE_CONFIG: YoutubeConfig = {
     callbackURL: 'http://localhost:4200/youtube/callback',
     apiKey: 'AIzaSyANlFJSmiI0DCecNJwanZo0ig7PZaulBR4',
     scope: 'https://www.googleapis.com/auth/youtube',
-    responseType: 'code',
+    responseType: 'token',
     authUrl: 'https://accounts.google.com/o/oauth2/v2/auth'
 };

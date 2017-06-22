@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { YoutubeAuthService } from '../auth/youtube-auth.service';
 
 @Component({
   selector: 'app-callback',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CallbackComponent implements OnInit {
 
-  constructor() { }
+  constructor(private youtubeAuth: YoutubeAuthService) { }
 
   ngOnInit() {
+    this.youtubeAuth.handleRequest();
   }
 
 }

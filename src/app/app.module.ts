@@ -7,7 +7,6 @@ import { YoutubeModule } from './youtube/youtube.module';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';
 import { CallbackComponent } from './callback/callback.component';
-import { YoutubeComponent } from './youtube/youtube.component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { YoutubeRoutingModule } from './youtube/youtube-routing.module';
