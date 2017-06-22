@@ -1,1 +1,8 @@
-<input #box (keyup.enter)="searchVideo(box.value)">
+<div class="formulaire">
+    <input type="text" class="input-text" #box (keyup.enter)="searchVideo(box.value)">
+    <div class="list">
+        <div class="item-list playlist">Vidéo n° 1</div>
+        <div class="item-list playlist">Vidéo n° 2</div>
+        <div class="item-list playlist">Vidéo n° 3</div>
+    </div>
+</div>
