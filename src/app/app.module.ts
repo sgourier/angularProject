@@ -21,8 +21,7 @@ import { LogoutComponent } from './logout/logout.component';
     AppComponent,
     AuthComponent,
     CallbackComponent,
-    LogoutComponent,
-    YoutubeComponent
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
