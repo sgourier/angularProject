@@ -8,12 +8,13 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class PlaylistService {
 
-  private accessToken = null;
+
   private channelId = '';
   data: any = {};
 
   constructor(private http: Http) {
-    this.accessToken = localStorage.getItem('access_token');
+    this.getVideosByPlaylistId();
+    this.createPlaylist();
   }
 
   getPlaylistsByChannelId(username) {
@@ -22,7 +23,6 @@ export class PlaylistService {
              this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?part=snippet%2CcontentDetails&channelId=' + data.json()['items'][0]['id'] + '&key=' + YOUTUBE_CONFIG.apiKey)
                       .map((res: Response) => res.json())
                       .subscribe(playlist => {
-                          console.log(playlist);
                           this.data = playlist;
                       })
           });
@@ -31,5 +31,35 @@ export class PlaylistService {
   getChannelId(username) {
         return this.http.get(YOUTUBE_CONFIG.apiUrl + 'channels?part=id&forUsername=' + username + '&key=' + YOUTUBE_CONFIG.apiKey)
             .toPromise();
+  }
+
+  getUserPlaylist() {
+        return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
+            .toPromise();
+  }
+
+  getVideosByPlaylistId() {
+   this.getUserPlaylist()
+       .then(data => {
+           this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlistItems?part=snippet&playlistId=' + data.json()['items'][0]['id'] + '&key=' + YOUTUBE_CONFIG.apiKey)
+               .map((res: Response) => res.json())
+               .subscribe(videos => {
+                   this.data = videos;
+               })
+       })
+  }
+
+  createPlaylist() {
+      this.http.post(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet%2Cstatus' + '&key=' + YOUTUBE_CONFIG.apiKey, { 'snippet': {
+          'title': 'OKLM',
+          'description': 'New playlist description'
+      },
+          'status': {
+              'privacyStatus': 'private'
+          }})
+          .map((res: Response) => res.json())
+          .subscribe(playlist => {
+              this.data = playlist;
+          })
   }
 }
