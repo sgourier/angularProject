@@ -5,7 +5,8 @@ import { HttpModule } from '@angular/http';
 
 import { YoutubeRoutingModule } from './youtube-routing.module';
 import { PlaylistComponent } from './playlist/playlist.component';
-import { PlaylistService } from './playlist/playlist.service'
+import { PlaylistService } from './playlist/playlist.service';
+import { VideoComponent } from './video/video.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PlaylistService } from './playlist/playlist.service'
     HttpModule
   ],
   declarations: [
-      PlaylistComponent
+      PlaylistComponent,
+      VideoComponent
   ],
   providers: [PlaylistService]
 })
