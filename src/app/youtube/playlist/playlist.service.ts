@@ -38,6 +38,14 @@ export class PlaylistService {
             .toPromise();
   }
 
+  getCurrentUserPlaylist() {
+      return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
+          .map((res: Response) => res.json())
+          .subscribe(data => {
+              this.data = data;
+          })
+  }
+
   getVideosByPlaylistId() {
    this.getUserPlaylist()
        .then(data => {
