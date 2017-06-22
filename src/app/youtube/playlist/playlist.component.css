@@ -1,0 +1,15 @@
+
+.parts input[type=text]{
+    background: rgba(0,0,0,0.1);
+    border-radius: 360px;
+    border:none;
+    font-size: 20px;
+    padding:5px;
+}
+.parts .input-text{
+    background: rgba(0,0,0,0.1);
+    border-radius: 360px;
+    border:none;
+    font-size: 20px;
+    padding:5px;
+}
