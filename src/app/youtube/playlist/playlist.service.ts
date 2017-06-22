@@ -13,7 +13,6 @@ export class PlaylistService {
   data: any = {};
 
   constructor(private http: Http) {
-    this.getVideosByPlaylistId();
   }
 
   getPlaylistsByChannelId(username) {
@@ -33,7 +32,6 @@ export class PlaylistService {
   }
 
   getUserPlaylist() {
-      console.log(this.data);
         return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
             .toPromise();
   }

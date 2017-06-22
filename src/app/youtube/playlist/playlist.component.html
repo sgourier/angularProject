@@ -5,3 +5,6 @@
     <option value="private">Privée</option>
 </select>
 <button (click)="onClick(document.getElementById('create-name').value,document.getElementById('create-description').value,document.getElementById('create-status').value)">Add</button>
+<ng-container *ngFor="let playlist of data.items">
+    <div class="">playlist.id</div>
+</ng-container>

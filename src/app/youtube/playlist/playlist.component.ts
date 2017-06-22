@@ -13,9 +13,7 @@ export class PlaylistComponent implements OnInit {
     constructor(private playlistService: PlaylistService) { }
 
     ngOnInit() {
-        this.playlistService.createPlaylist("playlist 1","description","private");
-        var playlists = this.playlistService.getUserPlaylist();
-        console.log(playlists);
+        var playlists = this.playlistService.getCurrentUserPlaylist();
     }
 
     onClick(name,description,status) {
