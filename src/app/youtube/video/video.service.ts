@@ -15,7 +15,11 @@ export class VideoService {
         .map((res: Response) => res.json())
         .subscribe(data => {
           this.data = data;
-          console.log(this.data);
         })
+  }
+
+  getData(query){
+      return this.http.get(YOUTUBE_CONFIG.apiUrl + 'search?part=snippet&order=viewCount&q=' + query + '&type=video&videoDefinition=high&key=' + YOUTUBE_CONFIG.apiKey)
+          .map((res:Response) => res.json());
   }
 }
