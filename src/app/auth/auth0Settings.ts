@@ -8,7 +8,7 @@ interface AuthConfig {
 }
 
 export const AUTH_CONFIG: AuthConfig = {
-    clientID: 'lkTB-0TYBUx34jhaODDT3klda7HdK4_L',
+    clientID: 'a8v7995kQaeMUHeJSnlZjZtMSPWTqq2W',
     domain: 'sgourier.eu.auth0.com',
     responseType: 'token id_token',
     audience: 'https://sgourier.eu.auth0.com/userinfo',

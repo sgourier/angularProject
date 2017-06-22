@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import auth0 from 'auth0-js';
-import {Http, Response} from '@angular/http';
 import { AUTH_CONFIG } from './auth0Settings';
 
 @Injectable()
@@ -17,7 +16,7 @@ export class AuthService {
         scope: AUTH_CONFIG.scope
     });
 
-    constructor(public router: Router, private http: Http) {}
+    constructor(public router: Router) {}
 
     public login(): void {
         this.auth0.authorize();
