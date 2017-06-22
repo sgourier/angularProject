@@ -28,3 +28,8 @@
     font-size: 20px;
     padding:5px;
 }
+
+.title.main{
+    background-color:rgba(0,0,0,0.9);
+    color:rgba(255,255,255,0.8);
+}
