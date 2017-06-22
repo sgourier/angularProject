@@ -8,12 +8,11 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class PlaylistService {
 
-  private accessToken = null;
+
   private channelId = '';
   data: any = {};
 
   constructor(private http: Http) {
-    this.accessToken = localStorage.getItem('youtube_access_token');
     this.getVideosByPlaylistId();
     this.createPlaylist();
   }
@@ -35,29 +34,32 @@ export class PlaylistService {
   }
 
   getUserPlaylist() {
-        return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + this.accessToken + '&part=snippet&mine=true')
+        return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
             .toPromise();
   }
 
   getVideosByPlaylistId() {
    this.getUserPlaylist()
        .then(data => {
-           this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlistItems?part=snippet&playlistId=' + data.json()['items'][0]['id'])
+           this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlistItems?part=snippet&playlistId=' + data.json()['items'][0]['id'] + '&key=' + YOUTUBE_CONFIG.apiKey)
                .map((res: Response) => res.json())
                .subscribe(videos => {
-                   console.log(videos);
                    this.data = videos;
                })
        })
   }
 
   createPlaylist() {
-      this.http.post(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + this.accessToken + 'part=snippet%2Cstatus', { 'snippet': {
+      this.http.post(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet%2Cstatus' + '&key=' + YOUTUBE_CONFIG.apiKey, { 'snippet': {
           'title': 'OKLM',
           'description': 'New playlist description'
       },
           'status': {
               'privacyStatus': 'private'
           }})
+          .map((res: Response) => res.json())
+          .subscribe(playlist => {
+              this.data = playlist;
+          })
   }
 }
