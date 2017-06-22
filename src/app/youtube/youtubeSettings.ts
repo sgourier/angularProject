@@ -5,6 +5,7 @@ interface YoutubeConfig {
     apiKey: string;
     scope: string;
     responseType: string;
+    authUrl: string;
 }
 
 export const YOUTUBE_CONFIG: YoutubeConfig = {
@@ -13,5 +14,6 @@ export const YOUTUBE_CONFIG: YoutubeConfig = {
     callbackURL: 'http://localhost:4200/youtube/callback',
     apiKey: '',
     scope: 'https://www.googleapis.com/auth/youtube',
-    responseType: 'code'
+    responseType: 'code',
+    authUrl: 'https://accounts.google.com/o/oauth2/v2/auth'
 };
