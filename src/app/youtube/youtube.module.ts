@@ -12,6 +12,7 @@ import { YoutubeComponent } from './youtube.component';
 
 import { PlaylistService } from './playlist/playlist.service';
 import { YoutubeAuthService } from './auth/youtube-auth.service';
+import { PlaylistParserService } from './playlist/playlist-parser.service';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { YoutubeAuthService } from './auth/youtube-auth.service';
   ],
   providers: [
       PlaylistService,
-      YoutubeAuthService
+      YoutubeAuthService,
+      PlaylistParserService
   ]
 })
 export class YoutubeModule { }
