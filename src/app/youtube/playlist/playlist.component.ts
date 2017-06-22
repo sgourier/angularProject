@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlaylistService } from './playlist.service';
+
 
 @Component({
     selector: 'app-playlist',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlaylistComponent implements OnInit {
 
-    constructor() { }
+
+    constructor(private playlistService: PlaylistService) { }
 
     ngOnInit() {
     }
 
+    onEnter(value: string) {this.playlistService.getPlaylistsByChannelId(value)}
 }

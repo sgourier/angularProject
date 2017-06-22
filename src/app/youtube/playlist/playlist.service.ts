@@ -2,44 +2,37 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {YOUTUBE_CONFIG} from '../youtubeSettings';
 import 'rxjs/add/operator/map';
+import {log} from "util";
+import 'rxjs/add/operator/toPromise';
 
 
 @Injectable()
 export class PlaylistService {
 
   private accessToken = null;
+  private channelId = '';
   data: any = {};
 
   constructor(private http: Http) {
     this.accessToken = localStorage.getItem('access_token');
-    // this.getUserPlaylist();
   }
 
-  getUserPlaylist() {
-    return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + this.accessToken + '&part=snippet&mine=true')
-                    .map((res: Response) => res.json())
-                    .subscribe(data => {
-                      console.log(data);
-                      this.data = data
-                    })
-  }
-
-  getPlaylistByChannel() {
-      return this.http.get(YOUTUBE_CONFIG.apiUrl + 'search?part=snippet&q=' +  + '&type=playlist&key=' + YOUTUBE_CONFIG.apiKey)
+  getPlaylistsByChannelId(username) {
+      this.getChannelId(username)
+          .then(data => {
+             this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?part=snippet%2CcontentDetails&channelId=' + data.json()['items'][0]['id'] + '&key=' + YOUTUBE_CONFIG.apiKey)
                       .map((res: Response) => res.json())
-                      .subscribe(data => {
-                          console.log(data);
-                          this.data = data
+                      .subscribe(playlist => {
+                          console.log(playlist);
+                          this.data = playlist;
                       })
+          });
   }
 
-  getChannelId() {
-      return this.http.get(YOUTUBE_CONFIG.apiUrl + 'channels?part=id&forUsername=' + + '&key=' + YOUTUBE_CONFIG.apiKey)
-          .map((res: Response) => res.json())
-          .subscribe(data => {
-              console.log(data);
-              this.data = data
-          })
+  getChannelId(username) {
+        return this.http.get(YOUTUBE_CONFIG.apiUrl + 'channels?part=id&forUsername=' + username + '&key=' + YOUTUBE_CONFIG.apiKey)
+            .toPromise();
   }
 
+  
 }
