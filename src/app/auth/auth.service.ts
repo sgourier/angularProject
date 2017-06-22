@@ -28,8 +28,7 @@ export class AuthService {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 window.location.hash = '';
                 this.setSession(authResult);
-                this.getGoogleToken();
-                // this.router.navigate(['/playlist']);
+                this.router.navigate(['/youtube/login']);
             } else if (err) {
                 this.router.navigate(['/login']);
                 console.log(err);
@@ -44,12 +43,6 @@ export class AuthService {
         localStorage.setItem('access_token', authResult.accessToken);
         localStorage.setItem('id_token', authResult.idToken);
         localStorage.setItem('expires_at', expiresAt);
-    }
-
-    private getGoogleToken() {
-        this.auth0.client.userInfo(localStorage.getItem('access_token'), function(err, user) {
-            console.log(err, user);
-        });
     }
 
     public logout(): void {
