@@ -33,6 +33,4 @@ export class PlaylistService {
         return this.http.get(YOUTUBE_CONFIG.apiUrl + 'channels?part=id&forUsername=' + username + '&key=' + YOUTUBE_CONFIG.apiKey)
             .toPromise();
   }
-
-  
 }
