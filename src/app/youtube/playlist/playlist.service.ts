@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {YOUTUBE_CONFIG} from '../youtubeSettings';
 import 'rxjs/add/operator/map';
-import {log} from "util";
 import 'rxjs/add/operator/toPromise';
 
 
