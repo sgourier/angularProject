@@ -20,8 +20,7 @@ export class PlaylistComponent implements OnInit {
         if( name != "" ){
             if( description != "" ){
                 if( status != "" ){
-                    alert("OK");
-//                    this.playlistService.createPlaylist(name,description,status)
+                    this.playlistService.createPlaylist(name,description,status)
                 }
                 else{
                     alert("Status de la playlist manquant");

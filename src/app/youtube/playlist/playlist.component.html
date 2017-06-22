@@ -1,10 +1,25 @@
-<input class="input-text" id="create-name">
-<input class="input-text" id="create-description">
-<select id="create-status">
-    <option value="public">Publique</option>
-    <option value="private">Privée</option>
-</select>
-<button (click)="onClick(document.getElementById('create-name').value,document.getElementById('create-description').value,document.getElementById('create-status').value)">Add</button>
+<div class="formulaire">
+    <input class="input-text" id="create-name" placeholder="Nom">
+    <br/>
+    <br/>
+    <input class="input-text" id="create-description" placeholder="Description">
+    <br/>
+    <br/>
+    <select id="create-status" class="input-text">
+        <option value="public">Publique</option>
+        <option value="private">Privée</option>
+    </select>
+    <br/>
+    <br/>
+    <button (click)="onClick(document.getElementById('create-name').value,document.getElementById('create-description').value,document.getElementById('create-status').value)">Créer la playlist</button>
+</div>
+<!--
 <ng-container *ngFor="let playlist of data.items">
     <div class="">playlist.id</div>
 </ng-container>
+-->
+<div class="list">
+    <div class="item-list playlist"> Playlist n°1</div>
+    <div class="item-list playlist"> Playlist n°2</div>
+    <div class="item-list playlist"> Playlist n°3</div>
+</div>
