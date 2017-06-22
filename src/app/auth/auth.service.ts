@@ -2,20 +2,22 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/filter';
 import auth0 from 'auth0-js';
+import {Http, Response} from '@angular/http';
+import { AUTH_CONFIG } from './auth0Settings';
 
 @Injectable()
 export class AuthService {
 
     auth0 = new auth0.WebAuth({
-        clientID: 'a8v7995kQaeMUHeJSnlZjZtMSPWTqq2W',
-        domain: 'sgourier.eu.auth0.com',
-        responseType: 'token id_token',
-        audience: 'https://sgourier.eu.auth0.com/userinfo',
-        redirectUri: 'http://localhost:4200/callback',
-        scope: 'openid'
+        clientID: AUTH_CONFIG.clientID,
+        domain: AUTH_CONFIG.domain,
+        responseType: AUTH_CONFIG.responseType,
+        audience: AUTH_CONFIG.audience,
+        redirectUri: AUTH_CONFIG.callbackURL,
+        scope: AUTH_CONFIG.scope
     });
 
-    constructor(public router: Router) {}
+    constructor(public router: Router, private http: Http) {}
 
     public login(): void {
         this.auth0.authorize();
@@ -26,7 +28,7 @@ export class AuthService {
             if (authResult && authResult.accessToken && authResult.idToken) {
                 window.location.hash = '';
                 this.setSession(authResult);
-                this.router.navigate(['/playlist']);
+                this.router.navigate(['/youtube/login']);
             } else if (err) {
                 this.router.navigate(['/login']);
                 console.log(err);
