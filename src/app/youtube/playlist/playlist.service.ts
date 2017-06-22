@@ -14,7 +14,6 @@ export class PlaylistService {
 
   constructor(private http: Http) {
     this.getVideosByPlaylistId();
-    this.createPlaylist();
   }
 
   getPlaylistsByChannelId(username) {
@@ -34,8 +33,17 @@ export class PlaylistService {
   }
 
   getUserPlaylist() {
+      console.log(this.data);
         return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
             .toPromise();
+  }
+
+  getCurrentUserPlaylist() {
+      return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
+          .map((res: Response) => res.json())
+          .subscribe(data => {
+              this.data = data;
+          })
   }
 
   getVideosByPlaylistId() {
@@ -49,13 +57,13 @@ export class PlaylistService {
        })
   }
 
-  createPlaylist() {
+  createPlaylist( name , description , status ) {
       this.http.post(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet%2Cstatus' + '&key=' + YOUTUBE_CONFIG.apiKey, { 'snippet': {
-          'title': 'OKLM',
-          'description': 'New playlist description'
+          'title': name,
+          'description': description
       },
           'status': {
-              'privacyStatus': 'private'
+              'privacyStatus': status
           }})
           .map((res: Response) => res.json())
           .subscribe(playlist => {
