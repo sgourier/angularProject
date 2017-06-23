@@ -16,6 +16,14 @@
 </div>
 <div class="list">
     <ng-container *ngFor="let playlist of playlists.items">
-        <div class="item-list playlist">{{ playlist.snippet.title }}</div>
+        <div class="item-list playlist container">
+            <div class="col-xs-8">
+                {{ playlist.snippet.title }}
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 delete" (click)="onClickDeletePlaylist( playlist.id )">
+                Supprimer
+            </div>
+        </div>
     </ng-container>
 </div>

@@ -36,4 +36,8 @@ export class PlaylistComponent implements OnInit {
         }
 
     }
+
+    onClickDeletePlaylist(idPlaylist){
+        this.playlistService.deletingPlaylistById(idPlaylist);
+    }
 }
