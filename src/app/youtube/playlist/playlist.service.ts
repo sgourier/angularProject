@@ -87,6 +87,6 @@ export class PlaylistService {
 
   deletingPlaylistById(playlistId) {
       //alert(playlistId);
-      this.http.delete(YOUTUBE_CONFIG.apiUrl + 'playlists?id=' + playlistId + 'access_token=' + localStorage.getItem('youtube_access_token') + '&key=' + YOUTUBE_CONFIG.apiKey)
+      this.http.delete(YOUTUBE_CONFIG.apiUrl + 'playlists?id=' + playlistId + '&access_token=' + localStorage.getItem('youtube_access_token') + '&key=' + YOUTUBE_CONFIG.apiKey)
   }
 }
