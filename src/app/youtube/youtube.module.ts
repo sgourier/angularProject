@@ -11,24 +11,30 @@ import { AuthComponent } from './auth/auth.component';
 import { YoutubeComponent } from './youtube.component';
 
 import { PlaylistService } from './playlist/playlist.service';
+import { PlaylistvideosService } from './playlist-videos/playlist-videos.service';
 import { YoutubeAuthService } from './auth/youtube-auth.service';
 import { PlaylistParserService } from './playlist/playlist-parser.service';
 import {VideoService} from './video/video.service';
 import { VideoParserService } from './video/video-parser.service';
 import { YoutubeAuthGuard } from './common/youtubeAuth.guard';
 
+import { FormsModule } from '@angular/forms';
+import { PlaylistVideosComponent } from './playlist-videos/playlist-videos.component';
+
 @NgModule({
   imports: [
     CommonModule,
     YoutubeRoutingModule,
-    HttpModule
+    HttpModule,
+      FormsModule
   ],
   declarations: [
       PlaylistComponent,
       AuthComponent,
       CallbackComponent,
       VideoComponent,
-      YoutubeComponent
+      YoutubeComponent,
+      PlaylistVideosComponent
   ],
   providers: [
       PlaylistService,
@@ -36,7 +42,8 @@ import { YoutubeAuthGuard } from './common/youtubeAuth.guard';
       PlaylistParserService,
       VideoService,
       VideoParserService,
-      YoutubeAuthGuard
+      YoutubeAuthGuard,
+      PlaylistvideosService
   ]
 })
 export class YoutubeModule { }

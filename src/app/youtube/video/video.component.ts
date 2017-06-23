@@ -9,6 +9,7 @@ import { VideoService } from './video.service'
 })
 export class VideoComponent implements OnInit {
 
+  private videos: any[];
   constructor(private videoService: VideoService) { }
 
   ngOnInit() {
@@ -16,6 +17,7 @@ export class VideoComponent implements OnInit {
 
   searchVideo(value: string) {
     value = value.replace(' ', '+');
-    this.videoService.searchQueryVideos(value);
+    this.videoService.searchQueryVideos(value)
+        .then(res => {this.videos = res; console.log(this.videos);});
   }
 }

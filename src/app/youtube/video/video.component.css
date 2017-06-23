@@ -17,7 +17,9 @@
         text-transform: uppercase;
     }
 
-
+.comment-search{
+    font-size:9px;
+}
 .list{
     margin-top:15px;
 }

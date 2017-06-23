@@ -1,0 +1,59 @@
+.parts{
+    border-left:1px solid silver;
+}
+.parts:first-child{
+    border:none;
+}
+.parts .title{
+    font-size: 14px;
+    padding-bottom:15px;
+    border: none;
+}
+.parts .title img{
+    height:70px;
+    border: 2px solid #fab0af;
+    border-radius: 360px;
+}
+.parts input[type=text]{
+    background: rgba(0,0,0,0.1);
+    border-radius: 360px;
+    border:none;
+    font-size: 20px;
+    padding:5px;
+}
+.parts .input-text{
+    background: rgba(0,0,0,0.1);
+    border-radius: 360px;
+    border:none;
+    font-size: 20px;
+    padding:5px;
+}
+
+.title.main{
+    background-color:rgba(0,0,0,0.9);
+    color:rgba(255,255,255,0.8);
+}
+
+
+
+.list{
+    margin-top:15px;
+}
+.list .item-list{
+    backgroud-color:white;
+    border:1px solid silver;
+    padding:7px;
+    border-radius: 360px;
+    text-align: left;
+    margin:10px auto 0;
+    width:80%;
+}
+.list .delete{
+    color:#cf2827;
+    font-size:10px;
+    padding-top:5px;
+}
+.list .delete:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}

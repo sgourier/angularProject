@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from './playlist.service';
+import { PlaylistvideosService } from '../playlist-videos/playlist-videos.service';
 
 
 @Component({
     selector: 'app-playlist',
     templateUrl: './playlist.component.html',
-    styleUrls: ['./playlist.component.css']
+    styleUrls: ['./playlist.component.css'],
+    providers: [PlaylistvideosService]
 })
 export class PlaylistComponent implements OnInit {
     private playlists: any[];
 
-    constructor(private playlistService: PlaylistService) { }
+    constructor(private playlistService: PlaylistService, private playlistVideoService: PlaylistvideosService) { }
 
     ngOnInit() {
         this.playlistService.getCurrentUserPlaylist()
@@ -36,4 +38,10 @@ export class PlaylistComponent implements OnInit {
         }
 
     }
+
+    onClickDeletePlaylist(idPlaylist , name){
+        alert("Vous allez supprimer la playlist : "+ name);
+        this.playlistService.deletingPlaylistById(idPlaylist);
+    }
+
 }
