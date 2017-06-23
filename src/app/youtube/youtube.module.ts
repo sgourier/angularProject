@@ -13,6 +13,7 @@ import { YoutubeComponent } from './youtube.component';
 import { PlaylistService } from './playlist/playlist.service';
 import { YoutubeAuthService } from './auth/youtube-auth.service';
 import { PlaylistParserService } from './playlist/playlist-parser.service';
+import {VideoService} from './video/video.service';
 import { VideoParserService } from './video/video-parser.service';
 import {Video} from "./video/Video";
 
@@ -33,7 +34,8 @@ import {Video} from "./video/Video";
       PlaylistService,
       YoutubeAuthService,
       PlaylistParserService,
-      VideoParserService
+      VideoParserService,
+      VideoService
   ]
 })
 export class YoutubeModule { }
