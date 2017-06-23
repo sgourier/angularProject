@@ -23,10 +23,9 @@ export class PlaylistService {
       this.getChannelId(username)
           .then(data => {
              this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?part=snippet%2CcontentDetails&channelId=' + data.json()['items'][0]['id'] + '&key=' + YOUTUBE_CONFIG.apiKey)
-                      .map((res: Response) => res.json())
-                      .subscribe(playlist => {
-                          this.data = playlist;
-                      })
+                 .toPromise()
+                 .then(response => response.json())
+                 .catch(this.handleError);
           });
   }
 
@@ -52,10 +51,9 @@ export class PlaylistService {
    this.getUserPlaylist()
        .then(data => {
            this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlistItems?part=snippet&playlistId=' + data.json()['items'][0]['id'] + '&key=' + YOUTUBE_CONFIG.apiKey)
-               .map((res: Response) => res.json())
-               .subscribe(videos => {
-                   this.data = videos;
-               })
+               .toPromise()
+               .then(response => response.json())
+               .catch(this.handleError);
        })
   }
 
