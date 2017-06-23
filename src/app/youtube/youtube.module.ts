@@ -13,6 +13,7 @@ import { YoutubeComponent } from './youtube.component';
 import { PlaylistService } from './playlist/playlist.service';
 import { YoutubeAuthService } from './auth/youtube-auth.service';
 import { PlaylistParserService } from './playlist/playlist-parser.service';
+import {VideoService} from './video/video.service';
 import { VideoParserService } from './video/video-parser.service';
 import { YoutubeAuthGuard } from './common/youtubeAuth.guard';
 
@@ -33,6 +34,7 @@ import { YoutubeAuthGuard } from './common/youtubeAuth.guard';
       PlaylistService,
       YoutubeAuthService,
       PlaylistParserService,
+      VideoService
       VideoParserService,
       YoutubeAuthGuard
   ]
