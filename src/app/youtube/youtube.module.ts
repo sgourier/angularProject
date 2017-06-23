@@ -42,7 +42,8 @@ import { PlaylistVideosComponent } from './playlist-videos/playlist-videos.compo
       PlaylistParserService,
       VideoService,
       VideoParserService,
-      YoutubeAuthGuard
+      YoutubeAuthGuard,
+      PlaylistvideosService
   ]
 })
 export class YoutubeModule { }

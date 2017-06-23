@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PlaylistVideosService } from '../playlist-videos/playlist-videos.service';
 
 
 @Component({
