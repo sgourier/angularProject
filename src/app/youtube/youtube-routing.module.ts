@@ -7,6 +7,7 @@ import { CallbackComponent } from './callback/callback.component';
 
 import { VideoComponent } from './video/video.component'
 import {AuthGuard} from '../common/auth.guard';
+import {YoutubeAuthGuard} from './common/youtubeAuth.guard';
 
 const routes: Routes = [
   { path: 'youtube/login',  component: AuthComponent, canActivate: [AuthGuard] },

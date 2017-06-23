@@ -20,9 +20,11 @@ export class YoutubeAuthService {
 
   public handleRequest() {
     const access_token = this.getParameterByName('access_token', window.location.href);
+    const expires_in = this.getParameterByName('expires_in', window.location.href);
     if (access_token !== '') {
       localStorage.setItem('youtube_access_token', access_token);
-      this.router.navigate(['/playlist']);
+      localStorage.setItem('youtube_expires_in', expires_in);
+      this.router.navigate(['/youtube']);
     } else {
       alert('L\'accès à échoué');
       this.router.navigate(['/youtube/login']);
@@ -46,6 +48,11 @@ export class YoutubeAuthService {
     }
 
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
-}
+  }
+
+  public isAuthenticated() {
+    const expiresAt = JSON.parse(localStorage.getItem('youtube_expires_in'));
+    return new Date().getTime() < expiresAt;
+  }
 
 }
