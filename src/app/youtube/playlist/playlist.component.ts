@@ -9,6 +9,7 @@ import { PlaylistService } from './playlist.service';
 })
 export class PlaylistComponent implements OnInit {
     private playlists: any[];
+    private videosPlaylist: any[];
 
     constructor(private playlistService: PlaylistService) { }
 
@@ -37,7 +38,13 @@ export class PlaylistComponent implements OnInit {
 
     }
 
-    onClickDeletePlaylist(idPlaylist){
+    onClickDeletePlaylist(idPlaylist , name){
+        alert("Vous allez supprimer la playlist : "+ name);
         this.playlistService.deletingPlaylistById(idPlaylist);
+    }
+
+    onClickDisplayVideos(idPlaylist){
+        alert(idPlaylist);
+        this.playlistService.getVideosByPlaylistId(idPlaylist);
     }
 }

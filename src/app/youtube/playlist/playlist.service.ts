@@ -47,10 +47,10 @@ export class PlaylistService {
   }
 
 
-  getVideosByPlaylistId() {
-   this.getUserPlaylist()
+  getVideosByPlaylistId( playlistId ) {
+        this.getUserPlaylist()
        .then(data => {
-           this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlistItems?part=snippet&playlistId=' + data.json()['items'][0]['id'] + '&key=' + YOUTUBE_CONFIG.apiKey)
+           this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlistItems?part=snippet&playlistId=' + playlistId + '&key=' + YOUTUBE_CONFIG.apiKey)
                .toPromise()
                .then(response => response.json())
                .catch(this.handleError);
