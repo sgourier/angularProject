@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from './playlist.service';
+import { PlaylistvideosService} from '../playlist-videos/playlist-videos.service';
 
 
 @Component({
     selector: 'app-playlist',
     templateUrl: './playlist.component.html',
-    styleUrls: ['./playlist.component.css']
+    styleUrls: ['./playlist.component.css'],
+    providers: [PlaylistvideosService]
 })
 export class PlaylistComponent implements OnInit {
     private playlists: any[];
     private videosPlaylist: any[];
 
-    constructor(private playlistService: PlaylistService) { }
+    constructor(private playlistService: PlaylistService, private playlistVideoService: PlaylistvideosService) { }
 
     ngOnInit() {
         this.playlistService.getCurrentUserPlaylist()
@@ -44,7 +46,6 @@ export class PlaylistComponent implements OnInit {
     }
 
     onClickDisplayVideos(idPlaylist){
-        alert(idPlaylist);
-        this.playlistService.getVideosByPlaylistId(idPlaylist);
+        this.playlistVideoService.getVideosByPlaylistId(idPlaylist);
     }
 }

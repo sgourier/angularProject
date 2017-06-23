@@ -11,6 +11,7 @@ import { AuthComponent } from './auth/auth.component';
 import { YoutubeComponent } from './youtube.component';
 
 import { PlaylistService } from './playlist/playlist.service';
+import { PlaylistvideosService } from './playlist-videos/playlist-videos.service';
 import { YoutubeAuthService } from './auth/youtube-auth.service';
 import { PlaylistParserService } from './playlist/playlist-parser.service';
 import {VideoService} from './video/video.service';
