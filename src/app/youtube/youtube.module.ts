@@ -34,7 +34,7 @@ import { YoutubeAuthGuard } from './common/youtubeAuth.guard';
       PlaylistService,
       YoutubeAuthService,
       PlaylistParserService,
-      VideoService
+      VideoService,
       VideoParserService,
       YoutubeAuthGuard
   ]
