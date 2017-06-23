@@ -83,10 +83,17 @@ export class PlaylistService {
               }
           }
       )
+      .map((res: Response) => res.json())
+      .subscribe(playlist => {
+          this.data = playlist;
+      })
   }
 
   deletingPlaylistById(playlistId) {
-      //alert(playlistId);
       this.http.delete(YOUTUBE_CONFIG.apiUrl + 'playlists?id=' + playlistId + '&access_token=' + localStorage.getItem('youtube_access_token') + '&key=' + YOUTUBE_CONFIG.apiKey)
+          .map((res: Response) => res.json())
+          .subscribe(videos => {
+              this.data = videos;
+          })
   }
 }
