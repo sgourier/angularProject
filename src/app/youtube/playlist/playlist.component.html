@@ -14,13 +14,8 @@
     <br/>
     <button (click)="onClick(document.getElementById('create-name').value,document.getElementById('create-description').value,document.getElementById('create-status').value)">Créer la playlist</button>
 </div>
-<!--
-<ng-container *ngFor="let playlist of data.items">
-    <div class="">playlist.id</div>
-</ng-container>
--->
 <div class="list">
-    <div class="item-list playlist"> Playlist n°1</div>
-    <div class="item-list playlist"> Playlist n°2</div>
-    <div class="item-list playlist"> Playlist n°3</div>
+    <ng-container *ngFor="let playlist of playlists.items">
+        <div class="item-list playlist">{{ playlist.snippet.title }}</div>
+    </ng-container>
 </div>

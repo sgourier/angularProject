@@ -9,8 +9,12 @@ import 'rxjs/add/operator/toPromise';
 export class PlaylistService {
 
 
-  private channelId = '';
-  data: any = {};
+    private channelId = '';
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    }
+    data: any = {};
 
   constructor(private http: Http) {
   }
@@ -36,13 +40,13 @@ export class PlaylistService {
             .toPromise();
   }
 
-  getCurrentUserPlaylist() {
-      return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
-          .map((res: Response) => res.json())
-          .subscribe(data => {
-              this.data = data;
-          })
+  getCurrentUserPlaylist(){
+    return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
+        .toPromise()
+        .then(response => response.json())
+        .catch(this.handleError);
   }
+
 
   getVideosByPlaylistId() {
    this.getUserPlaylist()
