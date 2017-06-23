@@ -17,11 +17,14 @@ import {VideoService} from './video/video.service';
 import { VideoParserService } from './video/video-parser.service';
 import { YoutubeAuthGuard } from './common/youtubeAuth.guard';
 
+import { FormsModule } from '@angular/forms';
+
 @NgModule({
   imports: [
     CommonModule,
     YoutubeRoutingModule,
-    HttpModule
+    HttpModule,
+      FormsModule
   ],
   declarations: [
       PlaylistComponent,

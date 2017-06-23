@@ -18,6 +18,6 @@ export class VideoComponent implements OnInit {
   searchVideo(value: string) {
     value = value.replace(' ', '+');
     this.videoService.searchQueryVideos(value)
-        .then(res => this.videos = res);
+        .then(res => {this.videos = res; console.log(this.videos);});
   }
 }

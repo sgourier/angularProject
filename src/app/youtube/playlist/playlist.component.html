@@ -1,18 +1,18 @@
 <div class="formulaire">
     <div class="fleche col-xs-1 col-xs-offset-11"></div>
-    <input class="input-text" id="create-name" placeholder="Nom">
+    <input type="text" class="input-text" [ngModel]="name" placeholder="Nom">
     <br/>
     <br/>
-    <input class="input-text" id="create-description" placeholder="Description">
+    <input class="input-text" [ngModel]="description" placeholder="Description">
     <br/>
     <br/>
-    <select id="create-status" class="input-text">
+    <select [ngModel]="status" class="input-text">
         <option value="public">Publique</option>
         <option value="private">Privée</option>
     </select>
     <br/>
     <br/>
-    <button (click)="onClick(document.getElementById('create-name').value,document.getElementById('create-description').value,document.getElementById('create-status').value)">Créer la playlist</button>
+    <button (click)="onClick('Nom playlist','Description playlist','public')">Créer la playlist</button>
 </div>
 <div class="list">
     <ng-container *ngFor="let playlist of playlists.items">
