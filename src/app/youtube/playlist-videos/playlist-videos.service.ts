@@ -7,7 +7,8 @@ import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class PlaylistvideosService {
-    
+
+
     data: any = {};
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
@@ -23,12 +24,11 @@ export class PlaylistvideosService {
     }
 
     getVideosByPlaylistId( playlistId ) {
-        alert("a");
-        this.getUserPlaylist()
+         this.getUserPlaylist()
             .then(data => {
                 this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlistItems?part=snippet&playlistId=' + playlistId + '&key=' + YOUTUBE_CONFIG.apiKey)
                     .toPromise()
-                    .then(response => {response.json()})
+                    .then(response => response.json())
                     .catch(this.handleError);
             })
     }

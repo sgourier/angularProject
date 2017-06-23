@@ -11,6 +11,7 @@ export class PlaylistService {
 
     private channelId = '';
     data: any = {};
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
@@ -19,6 +20,7 @@ export class PlaylistService {
   constructor(private http: Http) {
   }
 
+  /** Get PlaylistsByChannelID, passing the channel Username **/
   getPlaylistsByChannelId(username) {
       this.getChannelId(username)
           .then(data => {
@@ -29,24 +31,27 @@ export class PlaylistService {
           });
   }
 
-  getChannelId(username) {
+    /** Get ByChannelID, passing the channel Username **/
+    getChannelId(username) {
         return this.http.get(YOUTUBE_CONFIG.apiUrl + 'channels?part=id&forUsername=' + username + '&key=' + YOUTUBE_CONFIG.apiKey)
             .toPromise();
   }
 
+  /** Get the current User Playlist **/
   getUserPlaylist() {
         return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
             .toPromise();
   }
 
-  getCurrentUserPlaylist(){
+    /** Get the current User Playlist **/
+    getCurrentUserPlaylist(){
     return this.http.get(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&mine=true')
         .toPromise()
         .then(response => response.json())
         .catch(this.handleError);
   }
 
-
+  /** Get the videos of a specific playlist **/
   getVideosByPlaylistId( playlistId ) {
         this.getUserPlaylist()
        .then(data => {
@@ -57,6 +62,7 @@ export class PlaylistService {
        })
   }
 
+  /** Create Playlist for the authenticated User **/
   createPlaylist( name , description , status ) {
       this.http.post(YOUTUBE_CONFIG.apiUrl + 'playlists?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet%2Cstatus' + '&key=' + YOUTUBE_CONFIG.apiKey, { 'snippet': {
           'title': name,
@@ -71,6 +77,7 @@ export class PlaylistService {
           })
   }
 
+  /** Add a video to playlist, passing the playlist_id, video_id **/
   addingVideoToPlaylist(playlist_id, video_id) {
       this.http.post(YOUTUBE_CONFIG.apiUrl + 'playlistItems?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&key=' + YOUTUBE_CONFIG.apiKey,
           {
@@ -89,6 +96,7 @@ export class PlaylistService {
       })
   }
 
+  /** deleting a specifif playlist **/
   deletingPlaylistById(playlistId) {
       this.http.delete(YOUTUBE_CONFIG.apiUrl + 'playlists?id=' + playlistId + '&access_token=' + localStorage.getItem('youtube_access_token') + '&key=' + YOUTUBE_CONFIG.apiKey)
           .map((res: Response) => res.json())
