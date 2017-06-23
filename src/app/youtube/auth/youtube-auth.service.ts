@@ -23,7 +23,7 @@ export class YoutubeAuthService {
     const expires_in = this.getParameterByName('expires_in', window.location.href);
     if (access_token !== '') {
       localStorage.setItem('youtube_access_token', access_token);
-      localStorage.setItem('youtube_expires_in', expires_in);
+      localStorage.setItem('youtube_expires_in', new Date().getTime() + expires_in);
       this.router.navigate(['/youtube']);
     } else {
       alert('L\'accès à échoué');
