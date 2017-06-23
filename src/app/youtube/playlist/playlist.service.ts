@@ -10,11 +10,11 @@ export class PlaylistService {
 
 
     private channelId = '';
+    data: any = {};
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     }
-    data: any = {};
 
   constructor(private http: Http) {
   }
