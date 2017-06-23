@@ -18,6 +18,7 @@ import { VideoParserService } from './video/video-parser.service';
 import { YoutubeAuthGuard } from './common/youtubeAuth.guard';
 
 import { FormsModule } from '@angular/forms';
+import { PlaylistVideosComponent } from './playlist-videos/playlist-videos.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { FormsModule } from '@angular/forms';
       AuthComponent,
       CallbackComponent,
       VideoComponent,
-      YoutubeComponent
+      YoutubeComponent,
+      PlaylistVideosComponent
   ],
   providers: [
       PlaylistService,
