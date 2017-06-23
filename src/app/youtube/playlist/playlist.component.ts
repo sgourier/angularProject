@@ -8,12 +8,13 @@ import { PlaylistService } from './playlist.service';
     styleUrls: ['./playlist.component.css']
 })
 export class PlaylistComponent implements OnInit {
-
+    private playlists: any[];
 
     constructor(private playlistService: PlaylistService) { }
 
     ngOnInit() {
-        var playlists = this.playlistService.getCurrentUserPlaylist();
+        this.playlistService.getCurrentUserPlaylist()
+            .then(res => this.playlists = res);
     }
 
     onClick(name,description,status) {

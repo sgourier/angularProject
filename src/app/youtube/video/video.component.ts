@@ -17,5 +17,6 @@ export class VideoComponent implements OnInit {
   searchVideo(value: string) {
     value = value.replace(' ', '+');
     this.videoService.searchQueryVideos(value);
+    this.videoService.getData(value);
   }
 }
