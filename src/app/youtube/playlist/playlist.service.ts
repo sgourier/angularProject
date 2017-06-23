@@ -70,4 +70,22 @@ export class PlaylistService {
               this.data = playlist;
           })
   }
+
+  addingVideoToPlaylist(playlist_id, video_id) {
+      this.http.post(YOUTUBE_CONFIG.apiUrl + 'playlistItems?access_token=' + localStorage.getItem('youtube_access_token') + '&part=snippet&key=' + YOUTUBE_CONFIG.apiKey,
+          {
+              'snippet': {
+                  'playlistId': playlist_id,
+                  'resourceId': {
+                      'kind': 'youtube#video',
+                      'videoId': video_id
+                  }
+              }
+          }
+      )
+  }
+
+  deletingPlaylistById(playlistId) {
+      this.http.delete(YOUTUBE_CONFIG.apiUrl + 'playlists?id=' + playlistId + 'access_token=' + localStorage.getItem('youtube_access_token') + '&key=' + YOUTUBE_CONFIG.apiKey)
+  }
 }
