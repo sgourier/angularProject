@@ -8,6 +8,9 @@ export class YoutubeAuthService {
 
   constructor(private router: Router) { }
 
+  /**
+   * Construct Youtube authentication URL from YOUTUBE_CONFIG const and redirect to it
+   */
   login() {
     let url = YOUTUBE_CONFIG.authUrl;
     url += '?client_id=' + YOUTUBE_CONFIG.clientID;
@@ -18,6 +21,10 @@ export class YoutubeAuthService {
     window.location.replace(url);
   }
 
+  /**
+   * Get Youtube credentials from query params on callback, check validity and store them to localStorage
+   * Redirect to Youtube login on fail
+   */
   public handleRequest() {
     const access_token = this.getParameterByName('access_token', window.location.href);
     const expires_in = this.getParameterByName('expires_in', window.location.href);
@@ -31,6 +38,12 @@ export class YoutubeAuthService {
     }
   }
 
+  /**
+   * Get query param from URL by name
+   * @param name
+   * @param url
+   * @returns {any}
+   */
   private getParameterByName(name, url) {
     if (!url) {
       url = window.location.href;
@@ -50,6 +63,10 @@ export class YoutubeAuthService {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   }
 
+  /**
+   * Check if Youtube credentials are not expired
+   * @returns {boolean}
+   */
   public isAuthenticated() {
     const expiresAt = JSON.parse(localStorage.getItem('youtube_expires_in'));
     return new Date().getTime() < expiresAt;
