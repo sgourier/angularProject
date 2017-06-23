@@ -11,7 +11,6 @@ import { PlaylistvideosService } from '../playlist-videos/playlist-videos.servic
 })
 export class PlaylistComponent implements OnInit {
     private playlists: any[];
-    private videosPlaylist: any[];
 
     constructor(private playlistService: PlaylistService, private playlistVideoService: PlaylistvideosService) { }
 
@@ -45,7 +44,4 @@ export class PlaylistComponent implements OnInit {
         this.playlistService.deletingPlaylistById(idPlaylist);
     }
 
-    onClickDisplayVideos(idPlaylist){
-        this.playlistVideoService.getVideosByPlaylistId(idPlaylist);
-    }
 }
